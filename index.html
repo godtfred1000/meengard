@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meen Gård – Gårdsbutikk og lokalmat i Skien</title>
+  <meta name="description" content="Meen Gård i Skien – gårdsbutikk med ferske grønnsaker, poteter, bær, honning og sesongvarer.">
+  <meta name="theme-color" content="#2d5b2c">
+  <style>
+    :root{
+      --green:#2d5b2c;
+      --green-2:#4f7d39;
+      --green-soft:#edf5ea;
+      --earth:#7c5b3f;
+      --cream:#faf6ef;
+      --paper:#fffdf9;
+      --ink:#172015;
+      --muted:#5d665a;
+      --line:#e8e1d4;
+      --shadow:0 18px 48px rgba(20,33,18,.12);
+      --radius:26px;
+      --radius-sm:18px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.55;
+    }
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+    .section{padding:84px 0}
+    .eyebrow{
+      display:inline-block;
+      color:var(--green-2);
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+    h1,h2,h3{margin:0 0 14px}
+    h1,h2{font-family: Georgia, "Times New Roman", serif}
+    p{margin:0 0 14px}
+    .muted{color:var(--muted)}
+
+    /* header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,253,249,.92);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(232,225,212,.9);
+    }
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+    .brand img{
+      width:56px;
+      height:56px;
+      object-fit:contain;
+      border-radius:14px;
+      background:white;
+      padding:4px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+    .brand span{font-size:1.05rem}
+    .menu{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .menu a{
+      text-decoration:none;
+      font-weight:700;
+      color:#263125;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-decoration:none;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:800;
+      transition:transform .18s ease, background .18s ease, color .18s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{
+      background:var(--green);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(45,91,44,.22);
+    }
+    .btn-secondary{
+      background:white;
+      color:var(--green);
+      border:1px solid rgba(255,255,255,.6);
+    }
+
+    /* hero */
+    .hero{
+      position:relative;
+      min-height:88vh;
+      display:grid;
+      align-items:center;
+      color:white;
+      overflow:hidden;
+      background:
+        linear-gradient(105deg, rgba(12,22,12,.78) 0%, rgba(12,22,12,.52) 38%, rgba(12,22,12,.22) 70%),
+        url('assets/hero_flyfoto.jpg') center/cover no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:180px;
+      background:linear-gradient(transparent, var(--paper));
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      padding:110px 0 160px;
+      max-width:760px;
+    }
+    .hero .eyebrow{color:#d6f2ca}
+    h1{
+      font-size:clamp(3rem, 8vw, 6.5rem);
+      line-height:.94;
+      margin-bottom:18px;
+    }
+    .lead{
+      font-size:clamp(1.05rem, 1.9vw, 1.28rem);
+      color:#f2f4ef;
+      max-width:650px;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+    .hero-strip{
+      position:relative;
+      z-index:2;
+      margin-top:-90px;
+    }
+    .strip-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .strip-card{
+      background:white;
+      border-radius:22px;
+      padding:22px 22px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+    }
+    .strip-card strong{
+      display:block;
+      margin-bottom:6px;
+      color:var(--green);
+      font-size:1.05rem;
+    }
+    .strip-card p{color:var(--muted); margin:0}
+
+    /* sections */
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:30px;
+      margin-bottom:34px;
+    }
+    .section-head h2{
+      font-size:clamp(2.15rem, 5vw, 4rem);
+      line-height:1;
+    }
+    .section-head p{
+      max-width:560px;
+      color:var(--muted);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:42px;
+      align-items:center;
+    }
+    .photo-stack{
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .photo-main, .photo-side, .gallery-card, .product-card, .feature-photo, .contact-card{
+      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:white;
+    }
+    .photo-main img, .photo-side img, .gallery-card img, .product-card img, .feature-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .photo-main{min-height:520px}
+    .photo-side{
+      min-height:250px;
+      display:grid;
+      gap:18px;
+      background:transparent;
+      box-shadow:none;
+      border:none;
+    }
+    .photo-side > div{
+      overflow:hidden;
+      border-radius:var(--radius);
+      min-height:250px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:white;
+    }
+    .about-copy p{color:var(--muted)}
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+    .chip{
+      border-radius:999px;
+      background:var(--green-soft);
+      color:var(--green);
+      padding:10px 14px;
+      font-weight:800;
+      font-size:.92rem;
+    }
+
+    .products{
+      background:var(--cream);
+    }
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .product-card img{height:260px}
+    .product-body{
+      padding:22px;
+    }
+    .product-body h3{font-size:1.28rem}
+    .product-body p{color:var(--muted); margin:0}
+
+
+    .selfpick{
+      background:linear-gradient(180deg,#f7fbf4 0%,#fffdf9 100%);
+    }
+    .selfpick-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .selfpick-card{
+      position:relative;
+      min-height:430px;
+      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:white;
+    }
+    .selfpick-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .selfpick-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(16,26,14,.82) 100%);
+    }
+    .selfpick-copy{
+      position:absolute;
+      left:0;right:0;bottom:0;
+      z-index:2;
+      color:white;
+      padding:28px;
+    }
+    .selfpick-copy .tag{
+      display:inline-block;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.24);
+      backdrop-filter:blur(8px);
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+    .selfpick-copy h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+    .selfpick-copy p{
+      color:#eef4ea;
+      max-width:520px;
+      margin-bottom:16px;
+    }
+    .selfpick-note{
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:18px;
+      background:var(--green-soft);
+      color:var(--green);
+      font-weight:700;
+      border:1px solid #d7e8d1;
+    }
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:8px;
+    }
+    .feature-photo{
+      position:relative;
+      min-height:420px;
+    }
+    .feature-photo::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(transparent 28%, rgba(14,22,14,.82));
+      z-index:1;
+    }
+    .feature-copy{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      z-index:2;
+      padding:28px;
+      color:white;
+    }
+    .feature-copy h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+    .feature-copy p{
+      color:#eef2ec;
+      margin:0;
+      max-width:530px;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      grid-auto-rows:250px;
+      gap:18px;
+    }
+    .gallery-card.tall{grid-row:span 2}
+    .gallery-card.wide{grid-column:span 2}
+    .gallery-card figcaption{
+      padding:12px 14px;
+      color:var(--muted);
+      font-size:.95rem;
+      background:white;
+      border-top:1px solid var(--line);
+    }
+
+    .cta-band{
+      background:linear-gradient(135deg, #2d5b2c, #587a33);
+      color:white;
+      border-radius:32px;
+      padding:34px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:22px;
+      box-shadow:var(--shadow);
+    }
+    .cta-band p{color:#edf5ea; margin:0}
+
+    .contact{
+      background:#213c20;
+      color:white;
+    }
+    .contact .eyebrow{color:#d5efc9}
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr .95fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .contact-card{
+      padding:28px;
+      background:rgba(255,255,255,.06);
+      color:white;
+      border-color:rgba(255,255,255,.1);
+      box-shadow:none;
+    }
+    .contact-card h3{
+      font-size:1.35rem;
+      margin-bottom:14px;
+    }
+    .contact-card p, .contact-card li{color:#d7e7d2}
+    .contact-list{
+      list-style:none;
+      padding:0;
+      margin:18px 0 0;
+      display:grid;
+      gap:14px;
+    }
+    .contact-list li{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .contact-list strong{
+      display:block;
+      color:white;
+      font-size:.84rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+    }
+    .logo-card{
+      display:grid;
+      place-items:center;
+      min-height:100%;
+      background:white;
+    }
+    .logo-card img{
+      max-width:min(100%, 320px);
+      height:auto;
+      object-fit:contain;
+      padding:18px;
+    }
+
+    footer{
+      background:#152814;
+      color:#d8e2d3;
+      padding:26px 0;
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      font-size:.95rem;
+    }
+
+    .mobile-bar{
+      display:none;
+    }
+
+    @media (max-width: 980px){
+      .about-grid,
+      .contact-grid,
+      .selfpick-grid,
+      .features-grid,
+      .product-grid,
+      .strip-grid,
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+      .photo-stack{grid-template-columns:1fr}
+      .photo-main{min-height:360px}
+      .photo-side{grid-template-columns:1fr 1fr}
+      .gallery-grid{grid-auto-rows:auto}
+      .gallery-card.tall,.gallery-card.wide{grid-row:auto;grid-column:auto}
+      .section-head{display:block}
+      .section-head p{margin-top:10px}
+      .cta-band{display:block}
+    }
+    @media (max-width: 760px){
+      .menu a:not(.btn){display:none}
+      .hero{min-height:82vh;background-position:center}
+      .hero-inner{padding:86px 0 132px}
+      .section{padding:66px 0}
+      .photo-side{grid-template-columns:1fr}
+      .btn{padding:13px 18px}
+      .brand span{font-size:1rem}
+      .mobile-bar{
+        display:flex;
+        position:fixed;
+        left:14px;
+        right:14px;
+        bottom:14px;
+        z-index:70;
+        gap:10px;
+      }
+      .mobile-bar .btn{flex:1}
+      body{padding-bottom:78px}
+    }
+    @media (max-width: 520px){
+      .wrap{width:min(var(--max),calc(100% - 22px))}
+      .nav{min-height:68px}
+      .brand img{width:48px;height:48px}
+      .hero-actions .btn{width:100%}
+      h1{font-size:3.5rem}
+      .strip-card{padding:18px}
+      .product-card img{height:230px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a href="#top" class="brand">
+        <img src="assets/logo.png" alt="Meen Gård logo">
+        <span>MEEN GÅRD</span>
+      </a>
+      <nav class="menu">
+        <a href="#om">Om gården</a>
+        <a href="#produkter">Produkter</a>
+        <a href="#selvplukk">Selvplukk</a>
+        <a href="#butikk">Gårdsbutikk</a>
+        <a href="#galleri">Galleri</a>
+        <a class="btn btn-primary" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <span class="eyebrow">Lokalmat fra Gjerpensdalen</span>
+        <h1>Ferske råvarer direkte fra Meen Gård</h1>
+        <p class="lead">Velkommen til Meen Gård i Skien. Her finner du gårdsbutikk, sesongens grønnsaker, poteter, bringebær, honning og andre gode varer dyrket og produsert med omtanke.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#produkter">Se produkter</a>
+          <a class="btn btn-secondary" href="https://www.facebook.com/meengard/?locale=nb_NO" target="_blank" rel="noopener">Facebook-side</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="hero-strip">
+      <div class="wrap strip-grid">
+        <div class="strip-card">
+          <strong>Gårdsbutikk</strong>
+          <p>Lokale produkter og ferske råvarer i sesong.</p>
+        </div>
+        <div class="strip-card">
+          <strong>Rett fra åkeren</strong>
+          <p>Poteter, løk, agurk, brokkoli, gulrøtter, bringebær og mye mer.</p>
+        </div>
+        <div class="strip-card">
+          <strong>Følg sesongen</strong>
+          <p>Åpningstider og oppdateringer deles på Facebook.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="om">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Om Meen Gård</span>
+            <h2>En levende gård med tradisjon, dyrking og gårdsutsalg</h2>
+          </div>
+          <p>Meen Gård ligger vakkert til i Gjerpensdalen i Skien. Her dyrkes grønnsaker og råvarer som selges i egen gårdsbutikk – kort vei fra jord til bord.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="photo-stack">
+            <div class="photo-main">
+              <img src="assets/road_summer.jpg" alt="Meen Gård med vei inn til gården">
+            </div>
+            <div class="photo-side">
+              <div><img src="assets/farm_wide.jpg" alt="Bygningene på Meen Gård"></div>
+              <div><img src="assets/field_cabbage.jpg" alt="Kålfelt ved Meen Gård"></div>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <p>På gården dyrkes det et bredt utvalg av grønnsaker og sesongvarer. Her kan besøkende finne ferske råvarer, gårdsprodukter og et utvalg lokalmat i et hyggelig og ekte gårdsmiljø.</p>
+            <p>Nettsiden er laget for å gi en enkel oversikt over hva Meen Gård tilbyr, med fokus på bilder av gården, produktene og gårdsbutikken.</p>
+            <div class="chips">
+              <span class="chip">Ferske grønnsaker</span>
+              <span class="chip">Gårdsbutikk</span>
+              <span class="chip">Lokalmat</span>
+              <span class="chip">Honning</span>
+              <span class="chip">Sesongvarer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products" id="produkter">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Produkter</span>
+            <h2>Smaken av sesongen</h2>
+          </div>
+          <p>Et utvalg av varene fra Meen Gård. Siden utvalget varierer gjennom året, er Facebook-siden fin å følge for siste nytt.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <img src="assets/cucumbers.jpg" alt="Agurker fra Meen Gård">
+            <div class="product-body">
+              <h3>Agurker</h3>
+              <p>Sprø, friske og klare til bruk – perfekt til sommerens måltider.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img src="assets/raspberries.jpg" alt="Bringebær fra Meen Gård">
+            <div class="product-body">
+              <h3>Bringebær</h3>
+              <p>Saftige og søte bringebær i sesong, rett fra gården.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img src="assets/broccoli.jpg" alt="Brokkoli og blomkål fra Meen Gård">
+            <div class="product-body">
+              <h3>Brokkoli & blomkål</h3>
+              <p>Ferske grønnsaker med flott kvalitet – høstet og solgt lokalt.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img src="assets/carrots.jpg" alt="Gulrøtter fra Meen Gård">
+            <div class="product-body">
+              <h3>Gulrøtter</h3>
+              <p>Klassiske gårdsfavoritter med god smak og flotte farger.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img src="assets/potatoes.jpg" alt="Poteter fra Meen Gård">
+            <div class="product-body">
+              <h3>Poteter</h3>
+              <p>Norsk gårdspotet – en viktig del av utvalget gjennom sesongen.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img src="assets/onions.jpg" alt="Løk fra Meen Gård">
+            <div class="product-body">
+              <h3>Løk</h3>
+              <p>Nykostet løk med frisk smak, fint både til matlaging og lagring.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section selfpick" id="selvplukk">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Selvplukk</span>
+            <h2>Plukk bringebær og mais selv</h2>
+          </div>
+          <p>Meen Gård har selvplukk av bringebær og mais i sesongen. Når selvplukk starter avhenger av vær, modning og tilgjengelighet.</p>
+        </div>
+
+        <div class="selfpick-grid">
+          <article class="selfpick-card">
+            <img src="assets/raspberries.jpg" alt="Bringebær til selvplukk på Meen Gård">
+            <div class="selfpick-copy">
+              <span class="tag">I sesong</span>
+              <h3>Selvplukk av bringebær</h3>
+              <p>Kom og plukk modne bringebær når sesongen er i gang. Oppstart og åpningstider publiseres på Facebook.</p>
+              <a class="btn btn-secondary" href="https://www.facebook.com/meengard/?locale=nb_NO" target="_blank" rel="noopener">Se status på Facebook</a>
+            </div>
+          </article>
+
+          <article class="selfpick-card">
+            <img src="assets/market_outdoor.jpg" alt="Maisåker og selvplukk på Meen Gård">
+            <div class="selfpick-copy">
+              <span class="tag">I sesong</span>
+              <h3>Selvplukk av mais</h3>
+              <p>Når maisen er klar for plukking, legges informasjon om oppstart og aktuelle dager ut på Facebook.</p>
+              <a class="btn btn-secondary" href="https://www.facebook.com/meengard/?locale=nb_NO" target="_blank" rel="noopener">Se status på Facebook</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="selfpick-note">
+          Selvplukk følger sesongen. Sjekk alltid Facebook før du kjører, så ser du om det er åpent og hva som er klart for plukking.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="butikk">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Gårdsbutikk</span>
+            <h2>Butikk, honning og lokale produkter</h2>
+          </div>
+          <p>Hos Meen Gård finner du mer enn bare grønnsaker – gårdsbutikken har også andre produkter, blant annet honning og sesongvarer.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-photo">
+            <img src="assets/shop_display.jpg" alt="Produkter i gårdsbutikken">
+            <div class="feature-copy">
+              <h3>Et hyggelig gårdsutsalg</h3>
+              <p>Et utvalg ferske varer og produkter presentert i gårdens butikkmiljø.</p>
+            </div>
+          </article>
+
+          <article class="feature-photo">
+            <img src="assets/honey_shelves.jpg" alt="Honningsalg i gårdsbutikken">
+            <div class="feature-copy">
+              <h3>Honning og spesialvarer</h3>
+              <p>Hyggelige butikkhyller med honning og andre varer som hører gården til.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galleri">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Galleri</span>
+            <h2>Litt mer fra gården</h2>
+          </div>
+          <p>Et utvalg bilder som gir følelsen av gården, utsalget og produktene.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card tall">
+            <img src="assets/road_shop.jpg" alt="Innkjøringen til Meen Gård">
+            <figcaption>Innkjøringen til gården og utsalget.</figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="assets/store_front.jpg" alt="Butikkbygget på Meen Gård">
+            <figcaption>Bygget med inngang til gårdsbutikken.</figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="assets/market_outdoor.jpg" alt="Uteutsalg på Meen Gård">
+            <figcaption>Sesongutsalg og varer ute ved åkeren.</figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="assets/winter_display.jpg" alt="Produkter fra gården">
+            <figcaption>Sesongvarer og lokale produkter.</figcaption>
+          </figure>
+
+          <figure class="gallery-card wide">
+            <img src="assets/hero_flyfoto.jpg" alt="Flyfoto av Meen Gård">
+            <figcaption>Meen Gård sett ovenfra.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cta-band">
+          <div>
+            <h3 style="font-family:Georgia,serif;font-size:2rem;margin-bottom:8px;">Følg med på hva som er i sesong</h3>
+            <p>Facebook-siden er den beste plassen for oppdateringer om åpningstider, produkter og hva som er tilgjengelig akkurat nå.</p>
+          </div>
+          <div>
+            <a class="btn btn-secondary" href="https://www.facebook.com/meengard/?locale=nb_NO" target="_blank" rel="noopener">Åpne Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="kontakt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Kontakt</span>
+            <h2>Velkommen til Meen Gård</h2>
+          </div>
+          <p>Ta turen innom, eller følg gården på Facebook for oppdatert informasjon om varer og sesong.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Besøk og følg oss</h3>
+            <ul class="contact-list">
+              <li>
+                <strong>Adresse</strong>
+                Håvundvegen 343, 3711 Skien
+              </li>
+              <li>
+                <strong>Facebook</strong>
+                <a href="https://www.facebook.com/meengard/?locale=nb_NO" target="_blank" rel="noopener">facebook.com/meengard</a>
+              </li>
+              <li>
+                <strong>Google Maps</strong>
+                <a href="https://www.google.com/maps/search/?api=1&query=H%C3%A5vundvegen+343%2C+3711+Skien" target="_blank" rel="noopener">Åpne kart</a>
+              </li>
+              <li>
+                <strong>Tips</strong>
+                Legg gjerne inn telefon eller e-post her hvis du vil ha det med senere.
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-card logo-card">
+            <img src="assets/logo.png" alt="Meen Gård logo">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© Meen Gård</div>
+      <div>Mobilvennlig nettside laget med egne bilder fra gården</div>
+    </div>
+  </footer>
+
+  <div class="mobile-bar">
+    <a class="btn btn-primary" href="https://www.facebook.com/meengard/?locale=nb_NO" target="_blank" rel="noopener">Facebook</a>
+    <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=H%C3%A5vundvegen+343%2C+3711+Skien" target="_blank" rel="noopener">Kart</a>
+  </div>
+</body>
+</html>
